@@ -1,0 +1,109 @@
+﻿@model Sklep.Models.ViewModels.TowarViewModel
+@{
+    ViewBag.Title = "Szczegóły";
+}
+<div class="container" style="height: 100%; margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 50px;">
+            <div id="sekcjaPowrotu">
+                <a class="gadzetBtn btn-block" style="width: 80px;" href="@Url.Action("Index")"><span class="glyphicon glyphicon-chevron-left"></span><b> Powrót</b></a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+            <div class="container">
+                <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="listaZdjec">
+                        <ul>
+                            @foreach (var zdj in Model.Zdjecia)
+                            {
+                                <li class="zmienGlownyObrazek zdjecieObramowanie" style="width: 85px; height: 85px"><a class="zmienGlownyObrazek" style="margin-bottom: 5px;"><img src="@zdj" style="width: 79px; height: 80px" alt="brak"/></a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-4 zdjecieDuze zdjecieObramowanie">
+                    
+
+                            <img id="glownyObrazek" src="@Model.Zdjecia.First()" />
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-5 cenaNaglowek">
+            <div style="text-align: center;">
+                <span class="cenaProduktu">
+                    @Model.Cena PLN / sztuka
+                </span><br />
+                <span>@Model.NazwaTowaru</span><br /><br />
+                <span>@Html.Raw(Model.Opis)</span><br /><br />
+            </div>
+            <div class="clearfix" style="margin-bottom: 25px;"></div>
+            <div>
+                <center>
+                    @using (Html.BeginForm("DodajPozycjeDoKoszyka", "Koszyk", FormMethod.Post))
+                    { 
+                        @Html.Hidden("idTowar", Model.IdTowar);
+                    
+                    <table cellpadding="8">
+                        <tr>
+                            <td align="left">Dostępna ilość</td>
+                            <td align="left">
+                                @Model.AktualnyStan
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="40%">Ilość:</td>
+                            <td>
+                                <input class="form-control" name="iloscTowaru" id="iloscTowaru" min="0" type="number" value="0" style="width: 70px; text-align: center;" label=""/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Suma</td>
+                            <td align="left"><span id="kwotaRazemTowaru">0</span> zł</td>
+                        </tr>
+                        <tr>
+                            <td width="40%"></td>
+                            <td>
+                                <button id="dodajDoKoszykaSubmit" type="submit" class="gadzetBtn btn-block">Dodaj do koszyka</button>
+                                <br />
+                                @Html.ValidationSummary()
+                            </td>
+                        </tr>
+                    </table>
+                    }
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".zmienGlownyObrazek").on("click touchend", function () {
+        var adresObrazka = $(this).find("img").prop('src');
+        $("#glownyObrazek").prop('src', adresObrazka);
+    });
+
+    $("#iloscTowaru").on("focusout", function () {
+        obliczKwote();
+    });
+    function obliczKwote() {
+        var ile = parseFloat($("#iloscTowaru").val());
+        var cena = parseFloat('@Model.Cena.ToString().Replace(",",".")');
+        var razem = ile * cena;
+        if ($.isNumeric(razem)) {
+            razem = razem.toFixed(2);
+            $("#kwotaRazemTowaru").html(razem);
+        }
+        else {
+            $("#kwotaRazemTowaru").html('0');
+        }
+    }
+</script>
+
+@*<script>
+        $(".ZmienGlownyObrazek").on('click TouchEnd', function () {
+            var adresObrazka = $(this).find('img').prop('src');
+            Console.log("fsdfsd");
+            $("#GlownyObrazek").prop('src',adresObrazka);
+        });
+    </script>*@

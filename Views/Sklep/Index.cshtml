@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<Sklep.Models.ViewModels.TowarViewModel>
+@{ViewBag.Title = "Sklep";}
+@using PagedList.Mvc;
+<div class="container" style="min-height:450px; margin-bottom:50px">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row gy-5">
+                <div class="col-sm-3">
+                    <p>Liczba Produktów: @Model.TotalItemCount</p>
+                </div>
+                <div class="col-sm-6">
+                    @using (Html.BeginForm("Index", "Sklep"))
+                    {
+                        <center>Sortuj wdl. @Html.DropDownList("sortowanie",(List<SelectListItem>) ViewBag.SortowanieLista, new {onchange="this.form.submit()"})</center>
+                    }
+                </div>
+                <div class="col-sm-3">
+                    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var t in Model)
+                {
+                    <div class="col-sm-6 col-md-4">
+                        <a href="@Url.Action("Szczegoly","Sklep",new {id=t.IdTowar})" class="thumbnail przyciskanie">
+                            <img src="@t.Zdjecia.FirstOrDefault()" alt="..." height="150px" width="150px">
+                            <div class="caption">
+                                <h3>@t.NazwaTowaru</h3>
+                                <p>@t.Cena.ToString("c")</p>
+                                <p>@t.Opis</p>
+                                <p>Aktualny stan: @t.AktualnyStan</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+                </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 25px;">
+        <div class="col-xs-12">
+            <center>
+                <div>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, sortowanie = ViewBag.Sortowanie }))
+                </div>
+            </center>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+@*//ctrl + K + D   //formatowanie kodu*@

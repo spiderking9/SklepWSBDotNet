@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "_MiniKoszyk";
+    decimal wartoscKoszyka = (decimal)ViewBag.WartoscKoszyka;
+}
+    <a href="@Url.Action("Index","Koszyk")">
+        <span class="glyphicon glyphicon-shopping-cart" style="font-size: 18px;"></span>
+        @if (wartoscKoszyka <= 0)
+        {
+            @:Koszyk pusty
+        }
+        else
+        {
+            @wartoscKoszyka @:PLN
+        }
+    </a>

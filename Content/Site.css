@@ -1,0 +1,180 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.obramowanieTowarow {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc9c9;
+    padding: 10px;
+    margin: 3.7% 20px 3.7% 0;
+}
+
+.sklepLink {
+    position: absolute;
+    right: 6px;
+}
+
+img {
+    height: auto;
+    width: 100px;
+}
+
+.cenaNaglowek {
+    position: absolute;
+    top: 200px;
+    right: 10px;
+}
+
+.sklepLink:hover {
+    filter: brightness(50%);
+    transition: filter 2s;
+}
+
+.gadzetBtn {
+    color: white !important;
+    background-color: #064382;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 100px;
+}
+
+    .gadzetBtn:hover, .gadzetBtn:active, .gadzetBtn:focus {
+        background-color: #15273A;
+        background: #15273A !important;
+    }
+
+@media (max-width: 767px) {
+    .col-xs-offset-1 {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 767px) {
+    .col-xs-offset-1 {
+        margin-left: 15%;
+    }
+
+    .listaZdjec ul {
+        float: left;
+    }
+
+        .listaZdjec ul li {
+            float: left;
+            margin-right: 5px;
+        }
+
+    .zdjecieDuze {
+        clear: both;
+        min-height: 300px;
+    }
+}
+
+img {
+    transition-property: width height margin-bottom;
+    transition-duration: 1.5s;
+}
+
+.przyciskanie:hover > img {
+    height: auto;
+    width: 140px;
+    margin-bottom: -40px;
+}
+
+.listaZdjec ul {
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+}
+
+#glownyObrazek {
+    width: 100%;
+    margin: auto;
+}
+
+.cenaProduktu {
+    text-align: center;
+    font-size: 36px;
+    color: #064382
+}
+
+.obramowanieTowaru {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc9c9;
+}
+
+.gadzetBtn {
+    color: white !important;
+    background-color: #064382;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 100px;
+}
+
+    .gadzetBtn:hover, .gadzetBtn:active, .gadzetBtn:focus {
+        background-color: #15273A;
+        background: #15273A !important;
+    }
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.margines-gorny {
+    margin-top: 60px;
+}
+
+#koszyk {
+    padding-top: 16px;
+    height: 49px;
+    width: 25%;
+    float: left;
+    padding-left: 20px;
+}
+
+#logOffForm {
+    padding: 20px 0 10px 0;
+    color: #9d9d9d;
+    margin-left: 20px;
+}
+
+    #logOffForm > a {
+        text-decoration: none;
+        color: #9d9d9d;
+    }
+
+        #logOffForm > a:hover, #logOffForm > a:active, #logOffForm > a:focus {
+            color: white;
+        }

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Panel Administracyjny";
+}
+
+<h2>Panel Administracyjny</h2>
+
+<div class="list-group">
+    <button type="button" class="list-group-item" style="max-width:400px;">@Html.ActionLink("Aktualnosci", "Index", "Aktualnoscs", null, new { @class = "btn btn-primary" })</button>
+    <button type="button" class="list-group-item" style="max-width:400px;">@Html.ActionLink("Ogloszenia", "Index", "Ogloszenies", null, new { @class = "btn btn-primary" })</button>
+    <button type="button" class="list-group-item" style="max-width:400px;">@Html.ActionLink("Pozycje", "Index", "Pozycje", null, new { @class = "btn btn-primary" })</button>
+</div>
+
+
+
+

@@ -1,0 +1,21 @@
+﻿@model List<Sklep.Models.Sklep.Towar>
+
+
+<div class="row">
+    <h3>Polecamy</h3>
+
+    @foreach (var promocyjne in Model)
+    {
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="@promocyjne.TowarZdjecia.First().Url" alt="...">
+                <div class="caption">
+                    <h3>@promocyjne.Nazwa</h3>
+                    <p>@promocyjne.Cena.ToString("c")</p>
+                    <p><a href="@Url.Action("Szczegoly", "Sklep", new { id = promocyjne.IdTowar })" class="btn btn-default" role="button">Szczegoly</a></p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
